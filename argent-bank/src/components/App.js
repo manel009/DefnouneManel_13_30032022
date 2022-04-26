@@ -6,14 +6,14 @@ import Footer from "./footer/Footer";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <HeaderNav />
     <Routes>
       <Route path="/" element={<Home />}/>
       <Route path="*" element={<Error404 />} />
     </Routes>
     <Footer />
-    </div>
+    </>
   );
 }
 
