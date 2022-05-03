@@ -3,6 +3,7 @@ import {Routes, Route} from 'react-router-dom';
 import Home from "./home/Home";
 import Error404 from "./error404/Error404";
 import Footer from "./footer/Footer";
+import SignIn from "./sign-in/SignIn";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <HeaderNav />
     <Routes>
       <Route path="/" element={<Home />}/>
+      <Route path="/signIn" element={<SignIn />}/>
       <Route path="*" element={<Error404 />} />
     </Routes>
     <Footer />
