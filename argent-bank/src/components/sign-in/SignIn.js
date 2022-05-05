@@ -1,37 +1,49 @@
 import React from "react";
 import{connect} from "react-redux";
+import UserService from "../../services/UserService";
 
 const mapStateToProps = state => {
     return {
-        user : state.user
+        user : state.user,
+        isConnected : state.isConnected,
     }
 };
 
 function SignIn(props){
-    console.log(props);
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const loginRequest={
+            email: event.target.username.value,
+            password: event.target.password.value,
+          };
+        UserService.loginUser(loginRequest).then( (data) =>{
+             console.log(data.status)
+             console.log(data.body.token)
+        })
+       
+      }
     return (
-        props.user.name ? "true"
+        props.isConnected ? "true"
             :
-            <main class="main bg-dark">
-            <section class="sign-in-content">
-              <i class="fa fa-user-circle sign-in-icon"></i>
+            <main className="main bg-dark">
+            <section className="sign-in-content">
+              <i className="fa fa-user-circle sign-in-icon"></i>
               <h1>Sign In</h1>
-              <form>
-                <div class="input-wrapper">
-                  <label for="username">Username</label
-                  ><input type="text" id="username" />
+              <form onSubmit={handleSubmit}>
+                <div className="input-wrapper">
+                  <label htmlFor="username">Username</label>
+                  <input type="text" id="username" />
                 </div>
-                <div class="input-wrapper">
-                  <label for="password">Password</label
+                <div className="input-wrapper">
+                  <label htmlFor="password">Password</label
                   ><input type="password" id="password" />
                 </div>
-                <div class="input-remember">
-                  <input type="checkbox" id="remember-me" /><label for="remember-me"
-                    >Remember me</label
-                  >
+                <div className="input-remember">
+                  <input type="checkbox" id="remember-me" />
+                  <label htmlFor="remember-me">Remember me</label>
                 </div>
-                <a href="./user.html" class="sign-in-button">Sign In</a>
-                <button class="sign-in-button">Sign In</button> 
+                <button className="sign-in-button">Sign In</button> 
                
               </form>
             </section>

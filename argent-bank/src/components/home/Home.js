@@ -3,14 +3,15 @@ import{connect} from "react-redux";
 
 const mapStateToProps = state => {
     return {
-        user : state.user
+        user : state.user,
+        isConnected : state.isConnected,
     }
 };
 
 function Home(props){
     console.log(props);
     return (
-        props.user.name ? "true"
+        props.isConnected ? "true"
             :
         <main>
         <div className="hero">

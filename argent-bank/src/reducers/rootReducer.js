@@ -1,5 +1,6 @@
 const initState = {
-    user : {}
+    user : {},
+    isConnected : false
 }
 
 const rootReducer = (state = initState,action) => {
