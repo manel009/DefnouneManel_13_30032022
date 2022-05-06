@@ -1,11 +1,22 @@
+
 import React from "react";
 import{connect} from "react-redux";
 import UserService from "../../services/UserService";
+import { Navigate } from "react-router-dom";
 
+//to get from store
 const mapStateToProps = state => {
     return {
         user : state.user,
         isConnected : state.isConnected,
+    }
+};
+
+// to update store
+const mapDispatchToProps = dispatch => {
+    return {
+        loginUser : (userToken, isConnected) =>
+        dispatch({type : "USER_LOGGIN_SUCCESS", payload : { token :userToken, isConnected:isConnected} })
     }
 };
 
@@ -17,14 +28,18 @@ function SignIn(props){
             email: event.target.username.value,
             password: event.target.password.value,
           };
+          // send login request
         UserService.loginUser(loginRequest).then( (data) =>{
-             console.log(data.status)
-             console.log(data.body.token)
+              // if login ok, update store with user token
+             if(data.status === 200){
+                 props.loginUser(data.body.token, true)
+             }   
         })
        
       }
     return (
-        props.isConnected ? "true"
+        props.isConnected ? 
+        <Navigate to="/myaccount" />
             :
             <main className="main bg-dark">
             <section className="sign-in-content">
@@ -51,4 +66,4 @@ function SignIn(props){
     );
 }
 
-export default (connect(mapStateToProps))(SignIn);
+export default ( connect(mapStateToProps, mapDispatchToProps) )(SignIn);

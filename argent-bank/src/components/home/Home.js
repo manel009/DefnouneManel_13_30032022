@@ -9,7 +9,6 @@ const mapStateToProps = state => {
 };
 
 function Home(props){
-    console.log(props);
     return (
         props.isConnected ? "true"
             :
