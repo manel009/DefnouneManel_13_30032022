@@ -1,7 +1,15 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import{connect} from "react-redux";
 
-function HeaderNav() {
+const mapStateToProps = state => {
+    return {
+        userData : state.userData,
+        isConnected : state.isConnected,
+    }
+};
+
+function HeaderNav(props) {
     return (
       <nav className="main-nav">
       <a className="main-nav-logo" href="./index.html">
@@ -12,16 +20,30 @@ function HeaderNav() {
         />
         <h1 className="sr-only">Argent Bank</h1>
       </a>
-      <div>
-        <Link to="/signIn" className="main-nav-item"> 
-          <i className="fa fa-user-circle"></i>
-           Sign In
-        </Link>  
-      </div>
+      
+        {props.isConnected ? 
+          <div>
+            <Link to="/myaccount" className="main-nav-item"> 
+              <i className="fa fa-user-circle"></i>
+              { props.userData.firstName }
+            </Link>  
+            <Link to="/signOut" className="main-nav-item"> 
+              <i className="fa fa-sign-out"></i>
+              Sign Out
+            </Link> 
+          </div>
+          :
+          <div>
+            <Link to="/signIn" className="main-nav-item"> 
+              <i className="fa fa-user-circle"></i>
+              Sign In
+            </Link>  
+          </div>
+        }
     </nav>
     );
     
     
 }
 
-export default HeaderNav
+export default (connect(mapStateToProps))(HeaderNav)

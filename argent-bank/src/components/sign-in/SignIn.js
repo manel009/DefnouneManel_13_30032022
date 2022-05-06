@@ -15,8 +15,8 @@ const mapStateToProps = state => {
 // to update store
 const mapDispatchToProps = dispatch => {
     return {
-        loginUser : (userToken, isConnected) =>
-        dispatch({type : "USER_LOGGIN_SUCCESS", payload : { token :userToken, isConnected:isConnected} })
+        loginUser : (userToken, isConnected, userData) =>
+        dispatch({type : "USER_LOGGIN_SUCCESS", payload : { token :userToken, isConnected:isConnected, userData:userData} })
     }
 };
 
@@ -30,12 +30,16 @@ function SignIn(props){
           };
           // send login request
         UserService.loginUser(loginRequest).then( (data) =>{
-              // if login ok, update store with user token
+              // if login ok, get user infos with token
              if(data.status === 200){
-                 props.loginUser(data.body.token, true)
+                UserService.getUserInfo(data.body.token).then( (dataUser) => {
+                  // when get info, update store
+                  if(dataUser.status === 200){
+                    props.loginUser(data.body.token, true, dataUser.body)
+                  }
+                })
              }   
         })
-       
       }
     return (
         props.isConnected ? 
