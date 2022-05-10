@@ -9,7 +9,19 @@ const mapStateToProps = state => {
     }
 };
 
+// to update store
+const mapDispatchToProps = dispatch => {
+  return {
+      signOut : () => dispatch({type : "USER_SIGN_OUT", payload : { } })
+  }
+};
+
 function HeaderNav(props) {
+
+    const handleSignOut = () => {
+      props.signOut()
+    }
+
     return (
       <nav className="main-nav">
       <a className="main-nav-logo" href="./index.html">
@@ -27,10 +39,10 @@ function HeaderNav(props) {
               <i className="fa fa-user-circle"></i>
               { props.userData.firstName }
             </Link>  
-            <Link to="/signOut" className="main-nav-item"> 
+            <a onClick={handleSignOut} className="main-nav-item"> 
               <i className="fa fa-sign-out"></i>
               Sign Out
-            </Link> 
+            </a> 
           </div>
           :
           <div>
@@ -46,4 +58,4 @@ function HeaderNav(props) {
     
 }
 
-export default (connect(mapStateToProps))(HeaderNav)
+export default (connect(mapStateToProps, mapDispatchToProps))(HeaderNav)
