@@ -11,6 +11,10 @@ const rootReducer = (state = initState,action) => {
         return newState;
     } else if(action.type === "USER_SIGN_OUT"){
         return initState;
+    }else if(action.type === "USER_EDIT_NAME"){
+        let newState = {...state, userData :action.payload.userData };
+        console.log(newState)
+        return newState;
     }
     return state;
 }

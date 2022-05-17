@@ -25,8 +25,11 @@ const UserService = {
             }
         );
      },
-     updateUserInfo: async function(userInfo) {
-        return axios.put("http://localhost:3001/api/v1/user/profile", userInfo).then(
+     updateUserInfo: async function(token, userInfo) {
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+        return axios.put("http://localhost:3001/api/v1/user/profile", userInfo, config).then(
             (resp) => {
                 return resp.data;
             }

@@ -39,7 +39,7 @@ function HeaderNav(props) {
               <i className="fa fa-user-circle"></i>
               { props.userData.firstName }
             </Link>  
-            <a onClick={handleSignOut} className="main-nav-item"> 
+            <a onClick={handleSignOut} className="main-nav-item" href='/signIn'> 
               <i className="fa fa-sign-out"></i>
               Sign Out
             </a> 
