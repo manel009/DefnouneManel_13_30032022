@@ -48,23 +48,24 @@ function MyAccount(props) {
             <div className="header">
               
               {isEditMode ?
-              <form onSubmit={handleSaveEdit}>
-              <div className="input-wrapper">
-                <input type="text" id="firstname" defaultValue={props.userData.firstName} />
-              </div>
-              <div className="input-wrapper">
-                <input type="text" id="lastname" defaultValue={props.userData.lastName}/>
-              </div>
-                <button className="edit-button">Save</button>
-                <button className="edit-button" onClick={handleEdit} >Cancel</button>
-            </form>
-                
-             
-             :
-             <>
-                <h1>Welcome back<br /> {props.userData.firstName} {props.userData.lastName}</h1>
-                <button className="edit-button" onClick={handleEdit}>Edit Name</button>
-            </>
+                <>
+                  <h1>Welcome back</h1>
+                  <form className="form-edit-infos" onSubmit={handleSaveEdit}>
+                    <div className="form-edit-infos-input">
+                      <input type="text" id="firstname" defaultValue={props.userData.firstName} />
+                      <input type="text" id="lastname" defaultValue={props.userData.lastName}/>
+                    </div>
+                    <div className="form-edit-infos-button">
+                      <button className="edit-button">Save</button>
+                      <button className="edit-button" onClick={handleEdit} >Cancel</button>
+                    </div>
+                  </form>
+                </>
+              :
+                <>
+                  <h1>Welcome back<br /> {props.userData.firstName} {props.userData.lastName}</h1>
+                  <button className="edit-button" onClick={handleEdit}>Edit Name</button>
+                </>
               }
               
             </div>

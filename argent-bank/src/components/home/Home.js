@@ -1,17 +1,7 @@
 import React from "react";
-import{connect} from "react-redux";
-
-const mapStateToProps = state => {
-    return {
-        user : state.user,
-        isConnected : state.isConnected,
-    }
-};
 
 function Home(props){
     return (
-        props.isConnected ? "true"
-            :
         <main>
         <div className="hero">
           <section className="hero-content">
@@ -60,4 +50,4 @@ function Home(props){
     );
 }
 
-export default (connect(mapStateToProps))(Home);
+export default Home;

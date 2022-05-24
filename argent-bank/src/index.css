@@ -13,11 +13,6 @@ code {
     monospace;
 }
 
-a:link, a:visited, a:hover,  a:active { 
-  color:#FF6060; 
-  text-decoration: none;
-}
-
 html {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -32,9 +27,20 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+.root{
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
 
 .main {
   flex: 1;
+  margin-top: 0;
+}
+
+.flex-row-line{
+  display: flex;
+  flex-direction: row;
 }
 
 .bg-dark {
@@ -74,6 +80,13 @@ body {
 .main-nav-item {
   text-decoration: none;
   margin-right: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-nav-item i {
+  margin-right: 0.3rem;
 }
 
 .main-nav-item:hover {
@@ -308,4 +321,37 @@ body {
   .transaction-button {
     width: 200px;
   }
+}
+
+.form-edit-infos{
+  display: flex;
+  flex-direction: column;
+  max-width: 250px;
+  margin: auto;
+}
+.form-edit-infos-input{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  max-width: 200px;
+  margin: auto;
+}
+.form-edit-infos-input input{
+  margin: 5px;
+  width: 70px;
+  height: 30px;
+}
+.form-edit-infos-button{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.form-edit-infos-button button{
+  width: 70px;
+  margin: 5px;
 }

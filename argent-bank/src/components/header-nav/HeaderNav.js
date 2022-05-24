@@ -34,12 +34,12 @@ function HeaderNav(props) {
       </a>
       
         {props.isConnected ? 
-          <div>
+          <div className='flex-row-line'>
             <Link to="/myaccount" className="main-nav-item"> 
               <i className="fa fa-user-circle"></i>
               { props.userData.firstName }
             </Link>  
-            <a onClick={handleSignOut} className="main-nav-item" href='/signIn'> 
+            <a onClick={handleSignOut} className="main-nav-item" href='/'> 
               <i className="fa fa-sign-out"></i>
               Sign Out
             </a> 
@@ -48,7 +48,7 @@ function HeaderNav(props) {
           <div>
             <Link to="/signIn" className="main-nav-item"> 
               <i className="fa fa-user-circle"></i>
-              Sign In
+               Sign In
             </Link>  
           </div>
         }

@@ -13,7 +13,6 @@ const rootReducer = (state = initState,action) => {
         return initState;
     }else if(action.type === "USER_EDIT_NAME"){
         let newState = {...state, userData :action.payload.userData };
-        console.log(newState)
         return newState;
     }
     return state;
